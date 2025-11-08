@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import useAuth from '../contexts/useAuth.js';
 import { useTestnets } from '../hooks/useTestnets';
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -30,7 +30,7 @@ const Testnets = () => {
 
   useEffect(() => {
     fetchTestnets();
-  }, []);
+  }, [fetchTestnets]);
 
   const handleLogout = async () => {
     try {

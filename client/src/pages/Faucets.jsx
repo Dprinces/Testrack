@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import useAuth from '../contexts/useAuth.js';
 import { useFaucets } from '../hooks/useFaucets';
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -27,7 +27,7 @@ const Faucets = () => {
     fetchFaucets();
     fetchChains();
     fetchNetworks();
-  }, []);
+  }, [fetchFaucets, fetchChains, fetchNetworks]);
 
   useEffect(() => {
     let filtered = faucets || [];

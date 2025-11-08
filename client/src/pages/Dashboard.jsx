@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import useAuth from '../contexts/useAuth.js';
 import { useTestnets } from '../hooks/useTestnets';
 import { useFaucets } from '../hooks/useFaucets';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -14,7 +14,7 @@ const Dashboard = () => {
     fetchTestnets();
     fetchTestnetStats();
     fetchFaucets();
-  }, []);
+  }, [fetchTestnets, fetchTestnetStats, fetchFaucets]);
 
   const handleLogout = async () => {
     try {

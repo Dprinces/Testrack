@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import useAuth from '../contexts/useAuth.js';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const Profile = () => {

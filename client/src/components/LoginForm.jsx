@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import useAuth from '../contexts/useAuth.js'
 import Logo from '../assets/Logo.svg'
 
 const LoginForm = () => {
@@ -84,17 +84,6 @@ const LoginForm = () => {
                         >
                             {loading ? 'Logging in...' : 'Log In'}
                         </button>
-                    <form className='flex flex-col gap-3'>
-                        <div className='flex flex-col'>
-                            <label htmlFor="email">Email Address</label>
-                            <input type="email" id='email' name='email' className='border border-gray-400 rounded-lg p-3' />
-                        </div>
-                        <div className='flex flex-col'>
-                            <label htmlFor="password">Password</label>
-                            <input type="password" id='password' name='password' className='border border-gray-400 rounded-lg p-3' />
-                        </div>
-                        <div className='text-right'><Link to="/recover" className='text-blue-600'>Forgotten Password</Link></div>
-                        <button type="submit" className='bg-blue-600 py-3 md:py-4 px-6 md:px-8 rounded-lg text-white w-full md:w-fit hover:bg-blue-700 cursor-pointer'>Log In</button>
                     </form>
                 </div>
             </div>

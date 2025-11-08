@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { apiService } from '../services/apiService';
+import useAuth from '../contexts/useAuth.js';
+import apiService from '../services/apiService.js';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const Notifications = () => {
@@ -29,7 +29,7 @@ const Notifications = () => {
 
   const markAsRead = async (id) => {
     try {
-      await apiService.markNotificationAsRead(id);
+      await apiService.markNotificationRead(id);
       setNotifications(notifications.map(notif => 
         notif.id === id ? { ...notif, read: true } : notif
       ));
@@ -40,7 +40,7 @@ const Notifications = () => {
 
   const markAllAsRead = async () => {
     try {
-      await apiService.markAllNotificationsAsRead();
+      await apiService.markAllNotificationsRead();
       setNotifications(notifications.map(notif => ({ ...notif, read: true })));
     } catch (error) {
       console.error('Failed to mark all notifications as read:', error);
@@ -49,10 +49,11 @@ const Notifications = () => {
 
   const deleteNotification = async (id) => {
     try {
-      await apiService.deleteNotification(id);
+      // No delete endpoint available; mark as read then remove locally
+      await apiService.markNotificationRead(id);
       setNotifications(notifications.filter(notif => notif.id !== id));
     } catch (error) {
-      console.error('Failed to delete notification:', error);
+      console.error('Failed to delete (remove) notification:', error);
     }
   };
 

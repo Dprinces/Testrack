@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import apiService from '../services/apiService.js';
+import { AuthContext } from './authContext.js';
 
 // Initial state
 const initialState = {
@@ -86,8 +87,7 @@ const authReducer = (state, action) => {
   }
 };
 
-// Create context
-const AuthContext = createContext();
+// AuthContext is imported from a separate file to satisfy fast-refresh lint rules.
 
 // Auth provider component
 export const AuthProvider = ({ children }) => {
@@ -155,31 +155,19 @@ export const AuthProvider = ({ children }) => {
 
   // Update profile function
   const updateProfile = async (profileData) => {
-    try {
-      const updatedUser = await apiService.updateProfile(profileData);
-      dispatch({ type: AUTH_ACTIONS.UPDATE_PROFILE_SUCCESS, payload: updatedUser });
-      return updatedUser;
-    } catch (error) {
-      throw error;
-    }
+    const updatedUser = await apiService.updateProfile(profileData);
+    dispatch({ type: AUTH_ACTIONS.UPDATE_PROFILE_SUCCESS, payload: updatedUser });
+    return updatedUser;
   };
 
   // Forgot password function
   const forgotPassword = async (email) => {
-    try {
-      return await apiService.forgotPassword(email);
-    } catch (error) {
-      throw error;
-    }
+    return await apiService.forgotPassword(email);
   };
 
   // Reset password function
   const resetPassword = async (resetData) => {
-    try {
-      return await apiService.resetPassword(resetData);
-    } catch (error) {
-      throw error;
-    }
+    return await apiService.resetPassword(resetData);
   };
 
   // Clear error function
@@ -205,13 +193,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use auth context
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
-
-export default AuthContext;
+// Note: useAuth is defined in './useAuth.js' to keep this file
+// exporting only components for fast-refresh compatibility.
