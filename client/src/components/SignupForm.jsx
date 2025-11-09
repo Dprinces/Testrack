@@ -70,55 +70,55 @@ const SignupForm = () => {
                     <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
                         <div className='flex flex-col'>
                             <label htmlFor="name">Full Name</label>
-                            <input 
-                                type="text" 
-                                id='name' 
-                                name='name' 
+                            <input
+                                type="text"
+                                id='name'
+                                name='name'
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
-                                className='border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500' 
+                                className='border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
                             />
                         </div>
                         <div className='flex flex-col'>
                             <label htmlFor="email">Email Address</label>
-                            <input 
-                                type="email" 
-                                id='email' 
-                                name='email' 
+                            <input
+                                type="email"
+                                id='email'
+                                name='email'
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
-                                className='border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500' 
+                                className='border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
                             />
                         </div>
                         <div className='flex flex-col'>
                             <label htmlFor="password">Password</label>
-                            <input 
-                                type="password" 
-                                id='password' 
-                                name='password' 
+                            <input
+                                type="password"
+                                id='password'
+                                name='password'
                                 value={formData.password}
                                 onChange={handleChange}
                                 required
                                 minLength="6"
-                                className='border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500' 
+                                className='border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
                             />
                         </div>
                         <div className='flex flex-col'>
                             <label htmlFor="confirmPassword">Confirm Password</label>
-                            <input 
-                                type="password" 
-                                id='confirmPassword' 
-                                name='confirmPassword' 
+                            <input
+                                type="password"
+                                id='confirmPassword'
+                                name='confirmPassword'
                                 value={formData.confirmPassword}
                                 onChange={handleChange}
                                 required
-                                className='border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500' 
+                                className='border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
                             />
                         </div>
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             disabled={loading}
                             className='bg-blue-600 py-4 px-8 rounded-lg text-white w-fit hover:bg-blue-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'
                         >
